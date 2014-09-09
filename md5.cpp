@@ -382,7 +382,7 @@ string MD5::toString() {
 
 
 int main(int argc, char* argv[]) {
-	MD5 md5;
+    MD5 md5;
 	char filePath[] = "./test.zip";
 	FILE* fp = NULL;
 
