@@ -383,17 +383,17 @@ string MD5::toString() {
 
 int main(int argc, char* argv[]) {
     MD5 md5;
-	char filePath[] = "./test.zip";
-	FILE* fp = NULL;
+    char filePath[] = "./test.zip";
+    FILE* fp = NULL;
 
-	if((fp = fopen(filePath, "wb")) != NULL) {
-		cout << "succ" << endl;
-		md5.update(infile);
-		cout << md5.toString() << endl;
-	}
-	else {
-		cout << "fail" << endl;
-	}
-
-	return 0;
+    if((fp = fopen(filePath, "wb")) != NULL) {
+        cout << "succ" << endl;
+        md5.update(infile);
+        out << md5.toString() << endl;
+    }
+    else {
+        cout << "fail" << endl;
+    }
+    
+    return 0;
 }
