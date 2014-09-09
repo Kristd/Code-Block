@@ -1,3 +1,4 @@
+
 #include <string>
 #include <fstream>
 #include <iostream>
@@ -344,7 +345,7 @@ a multiple of 4.
 */
 void MD5::encode(const uint32* input, byte* output, size_t length) {
     for (size_t i = 0, j = 0; j < length; ++i, j += 4) {
-        output[j]= (byte)(input[i] & 0xff);
+    	output[j]= (byte)(input[i] & 0xff);
         output[j + 1] = (byte)((input[i] >> 8) & 0xff);
         output[j + 2] = (byte)((input[i] >> 16) & 0xff);
         output[j + 3] = (byte)((input[i] >> 24) & 0xff);
@@ -397,4 +398,3 @@ int main(int argc, char* argv[]) {
 
 	return 0;
 }
-
