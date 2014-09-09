@@ -36,7 +36,6 @@ private:
     MD5(const MD5&);
     MD5& operator=(const MD5&);
  
-private:
     uint32 _state[4];   /* state (ABCD) */
     uint32 _count[2];   /* number of bits, modulo 2^64 (low-order word first) */
     byte _buffer[64];   /* input buffer */
