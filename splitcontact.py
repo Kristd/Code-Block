@@ -1,112 +1,145 @@
 #!/bin/sh
-#encoding: utf-8
+# -*- encoding: utf-8 -*-
 
 import re
 import os
 
 
-inputPath = "f:\\contact.txt"
-outputPath = "f:\\data.txt"
+def openOutputFile(destfile):
+    try:
+        if os.path.exists(destfile):
+            os.remove(destfile)
+
+        return open(destfile, "w+")
+    except Exception as err:
+        return None
 
 
-def createOutputFile(outputPath):
-	try:
-		if os.path.exists(outputPath):
-			os.remove(outputPath)
-
-		return open(outputPath, "w+")
-	except Exception as err:
-		return None
-
-
-def openInputFile(inputPath):
-	try:
-		if os.path.exists(inputPath):
-			return open(inputPath, "r")
-		else:
-			return None
-	except Exception as err:
-		return None
+def openInputFile(srcfile):
+    try:
+        if os.path.exists(srcfile):
+            return open(srcfile, "r")
+        else:
+            return None
+    except Exception as err:
+        return None
 
 
 #"splc10": ["107", "405"],
-def setBranchList(inputPath):
-	splcList = ""
-	m = re.compile("([0-9]{3}){1}")
-	line = inputPath.readline()
-	index = 0
+def setBranchList(srcfile, destfile):
+    flag = False
+    splcList = ""
+    splcHead = "\"splc10\":["
+    m = re.compile("([0-9]{3}){1}")
 
-	while line:
-		if m.match(line.strip()):
-			tmp = line.split('\t')
-			splc = tmp[0].strip()
+    for line in srcfile:
+        if m.match(line.strip()):
+            tmp = line.split('\t')
 
-			if index == 0:
-				splcList += "\"" + splc + "\""
-				index += 1
-			else:
-				splcList += ", \"" + splc + "\""
+            if not flag:
+                splcList += "\"" + tmp[0].strip() + "\""
+                flag = True
+            else:
+                splcList += ", \"" + tmp[0].strip() + "\""
 
-		line = inputPath.readline()
-
-	return splcList
+    splcHead += splcList + "]"
+    destfile.writelines(splcHead)
+    print "setBranchList finish."
 
 
 #{"splc10": "107", "addr": ["kristd@live.cn", "kristd@live.cn"]}, 
-def setSplcAddr(inputPath, outputPath):
-	splc10 = "\"splc10\": \"[splcNo]\", \"addr\":["
-	addrList = ""
-	buff = []
-	m = re.compile("([0-9]{3}){1}")
-	line = inputPath.readline()
+def setSplcAddr(srcfile, destfile):
+    flag = False
+    addrList = ""
+    splcHeader = "\"splc10\": \"[splcNo]\", \"addr\":["
+    m = re.compile("([0-9]{3}){1}")
 
-	while not m.match(line.strip()):
-		line = inputPath.readline()
+    for line in srcfile:
+        if len(line.strip()) == 0:
+            continue
 
-	while line:
-		if m.match(line.strip()):
-			buff.append(line)
-			line = inputPath.readline()
+        if m.match(line.strip()):
+            if flag:
+                splcHeader += addrList + "]"
+                destfile.writelines(splcHeader)
+                destfile.writelines("\n")
 
-			while not m.match(line.strip()):
-				buff.append(line)
+            flag = True
+            addrList = ""
+            splcHeader = "\"splc10\": \"[splcNo]\", \"addr\":["
+            tmp = line.split('\t')
+            splcHeader = splcHeader.replace("[splcNo]", tmp[0].strip())
 
-			for i in range(len(buff)):
-				if i == 0:
-					tmp = line.split('\t')
-					splc = tmp[0].strip()
-					addr = tmp[1].strip()
+            if len(tmp[1].strip()) != 0:
+                addrList += "\"" + tmp[1].strip() + "\""
+        else:
+            if addrList != "":
+                addrList += ", \"" + line.strip() + "\""
+            else:
+                addrList += "\"" + line.strip() + "\""
 
-					splc10.replace("[splcNo]", splc)
+    splcHeader += addrList + "]\n"
+    destfile.writelines(splcHeader)
+    print "setSplcAddr finish."
 
-					if addr != "":
-						addrList += "\"" + addr + "\""
-				else:
-					if addr == "":
-						continue
-					else:
-						if addrList != "":
-							addrList += ", \"" + addr + "\""
-						else:
-							addrList += "\"" + addr + "\""
 
-			splc10 += addrList + "]\n"
-			outputPath.writelines(splc10)
-		else:
-			line = inputPath.readline()
+#combine the two functions
+def formatData(srcfile, destfile):
+    flag = False
+    addrList = ""
+    addrHeader = "\"splc10\": \"[splcNo]\", \"addr\":["
+
+    splcList = ""
+    splcHeader = "\"splc10\":["
+    m = re.compile("([0-9]{3}){1}")
+
+    for line in srcfile:
+        if len(line.strip()) == 0:
+            continue
+
+        if m.match(line.strip()):
+            if flag:
+                addrHeader += addrList + "]"
+                destfile.writelines(addrHeader)
+                destfile.writelines("\n")
+
+            addrList = ""
+            addrHeader = "\"splc10\": \"[splcNo]\", \"addr\":["
+            tmp = line.split('\t')
+            addrHeader = addrHeader.replace("[splcNo]", tmp[0].strip())
+
+            if not flag:
+                splcList += "\"" + tmp[0] + "\""
+            else:
+                splcList += ", \"" + tmp[0] + "\""
+
+            
+
+            if len(tmp[1].strip()) != 0:
+                addrList += "\"" + tmp[1] + "\""
+
+            flag = True
+        else:
+            if addrList != "":
+                addrList += ", \"" + line.strip() + "\""
+            else:
+                addrList += "\"" + line.strip() + "\""
+
+    splcHeader += splcList + "]"
+    addrHeader += addrList + "]"
+    destfile.writelines(addrHeader)
+    destfile.writelines("\n\n")
+    destfile.writelines(splcHeader)
+    destfile.writelines("\n")
 
 
 if __name__ == '__main__':
-	splcListHead = "\"splc10\":["
-	src =  openInputFile(inputPath)
-	data = createOutputFile(outputPath)
-	
-	if src != None:
-		splcList = setBranchList(src)
+    srcfile = "contact.txt"
+    destfile = "data.txt"
 
-	if data != None:
-		splcListHead += splcList + "]"
-		data.writelines(splcListHead)
-		data.writelines("\n\n")
-		setSplcAddr(src, data)
+    src = openInputFile(srcfile)
+    dest = openOutputFile(destfile)
 
+    formatData(src1, dest)
+    src.close()
+    dest.close()
