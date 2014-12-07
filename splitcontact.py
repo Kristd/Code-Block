@@ -113,8 +113,6 @@ def formatData(srcfile, destfile):
             else:
                 splcList += ", \"" + tmp[0] + "\""
 
-            
-
             if len(tmp[1].strip()) != 0:
                 addrList += "\"" + tmp[1] + "\""
 
