@@ -133,7 +133,7 @@ def formatData(srcfile, destfile):
 
 if __name__ == '__main__':
     srcfile = "contact.txt"
-    destfile = "data.txt"
+    destfile = "output.txt"
 
     src = openInputFile(srcfile)
     dest = openOutputFile(destfile)
