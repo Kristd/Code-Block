@@ -106,15 +106,17 @@ def formatData(srcfile, destfile):
             addrList = ""
             addrHeader = "\"splc10\": \"[splcNo]\", \"addr\":["
             tmp = line.split('\t')
-            addrHeader = addrHeader.replace("[splcNo]", tmp[0].strip())
+            splc = tmp[0].strip()
+            addr = tmp[1].strip()
+            addrHeader = addrHeader.replace("[splcNo]", splc)
 
             if not flag:
-                splcList += "\"" + tmp[0] + "\""
+                splcList += "\"" + splc + "\""
             else:
-                splcList += ", \"" + tmp[0] + "\""
+                splcList += ", \"" + splc + "\""
 
-            if len(tmp[1].strip()) != 0:
-                addrList += "\"" + tmp[1] + "\""
+            if len(addr) != 0:
+                addrList += "\"" + addr + "\""
 
             flag = True
         else:
@@ -141,3 +143,4 @@ if __name__ == '__main__':
     formatData(src1, dest)
     src.close()
     dest.close()
+    print "finish!\n"
