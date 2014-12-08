@@ -87,7 +87,7 @@ def setSplcAddr(srcfile, destfile):
 def formatData(srcfile, destfile):
     flag = False
     addrList = ""
-    addrHeader = "\"splc10\": \"[splcNo]\", \"addr\":["
+    addrHeader = "{\"splc10\": \"[splcNo]\", \"addr\":["
 
     splcList = ""
     splcHeader = "\"splc10\":["
@@ -99,12 +99,12 @@ def formatData(srcfile, destfile):
 
         if m.match(line.strip()):
             if flag:
-                addrHeader += addrList + "]"
+                addrHeader += addrList + "]},"
                 destfile.writelines(addrHeader)
                 destfile.writelines("\n")
 
             addrList = ""
-            addrHeader = "\"splc10\": \"[splcNo]\", \"addr\":["
+            addrHeader = "{\"splc10\": \"[splcNo]\", \"addr\":["
             tmp = line.split('\t')
             splc = tmp[0].strip()
             addr = tmp[1].strip()
@@ -126,7 +126,7 @@ def formatData(srcfile, destfile):
                 addrList += "\"" + line.strip() + "\""
 
     splcHeader += splcList + "]"
-    addrHeader += addrList + "]"
+    addrHeader += addrList + "]}"
     destfile.writelines(addrHeader)
     destfile.writelines("\n\n")
     destfile.writelines(splcHeader)
