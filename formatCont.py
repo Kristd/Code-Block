@@ -140,7 +140,7 @@ if __name__ == '__main__':
     src = openInputFile(srcfile)
     dest = openOutputFile(destfile)
 
-    formatData(src1, dest)
+    formatData(src, dest)
     src.close()
     dest.close()
     print "finish!\n"
