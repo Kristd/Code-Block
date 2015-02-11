@@ -5,142 +5,136 @@ import re
 import os
 
 
-def openOutputFile(destfile):
-    try:
-        if os.path.exists(destfile):
-            os.remove(destfile)
+def open_outfile(destfile):
+    if os.path.exists(destfile):
+        os.remove(destfile)
 
-        return open(destfile, "w+")
-    except Exception as err:
+    return open(destfile, "w+")
+
+
+def open_infile(srcfile):
+    if os.path.exists(srcfile):
+        return open(srcfile, "r")
+    else:
         return None
 
 
-def openInputFile(srcfile):
-    try:
-        if os.path.exists(srcfile):
-            return open(srcfile, "r")
-        else:
-            return None
-    except Exception as err:
-        return None
-
-
-#"splc10": ["107", "405"],
-def setBranchList(srcfile, destfile):
-    flag = False
-    splcList = ""
-    splcHead = "\"splc10\":["
-    m = re.compile("([0-9]{3}){1}")
+# "splc10": ["107", "405"],
+def set_branch_list(srcfile, destfile):
+    first_line = True
+    branch_list = ""
+    branch_header = '"splc10":['
+    m = re.compile("([0-9]{3})")
 
     for line in srcfile:
         if m.match(line.strip()):
-            tmp = line.split('\t')
+            tmp = line.split(":")
 
-            if not flag:
-                splcList += "\"" + tmp[0].strip() + "\""
-                flag = True
+            if first_line:
+                branch_list += "\"" + tmp[0].strip() + "\""
+                first_line = False
             else:
-                splcList += ", \"" + tmp[0].strip() + "\""
+                branch_list += ", \"" + tmp[0].strip() + "\""
 
-    splcHead += splcList + "]"
-    destfile.writelines(splcHead)
-    print "setBranchList finish."
+    branch_header += branch_list + "]"
+    destfile.writelines(branch_header)
+    print "set_branch_list() finish."
 
 
-#{"splc10": "107", "addr": ["kristd@live.cn", "kristd@live.cn"]}, 
-def setSplcAddr(srcfile, destfile):
-    flag = False
-    addrList = ""
-    splcHeader = "\"splc10\": \"[splcNo]\", \"addr\":["
-    m = re.compile("([0-9]{3}){1}")
+# {"splc10": "107", "addr": ["kristd@live.cn", "kristd@live.cn"]},
+def set_branch_address(srcfile, destfile):
+    first_line = True
+    address_list = ""
+    branch_header = '"splc10": "[splcNo]", "addr":['
+    m = re.compile("([0-9]{3})")
 
     for line in srcfile:
         if len(line.strip()) == 0:
             continue
 
         if m.match(line.strip()):
-            if flag:
-                splcHeader += addrList + "]"
-                destfile.writelines(splcHeader)
+            if not first_line:
+                branch_header += address_list + "]"
+                destfile.writelines(branch_header)
                 destfile.writelines("\n")
 
-            flag = True
-            addrList = ""
-            splcHeader = "\"splc10\": \"[splcNo]\", \"addr\":["
-            tmp = line.split('\t')
-            splcHeader = splcHeader.replace("[splcNo]", tmp[0].strip())
+            first_line = True
+            address_list = ""
+            branch_header = '"splc10": "[splcNo]", "addr":['
+            tmp = line.split(":")
+            branch_header = branch_header.replace("[splcNo]", tmp[0].strip())
 
             if len(tmp[1].strip()) != 0:
-                addrList += "\"" + tmp[1].strip() + "\""
+                address_list += "\"" + tmp[1].strip() + "\""
         else:
-            if addrList != "":
-                addrList += ", \"" + line.strip() + "\""
+            if address_list != "":
+                address_list += ", \"" + line.strip() + "\""
             else:
-                addrList += "\"" + line.strip() + "\""
+                address_list += "\"" + line.strip() + "\""
 
-    splcHeader += addrList + "]\n"
-    destfile.writelines(splcHeader)
-    print "setSplcAddr finish."
+    branch_header += address_list + "]\n"
+    destfile.writelines(branch_header)
+    print "set_branch_address() finish."
 
 
-#combine the two functions
-def formatData(srcfile, destfile):
-    flag = False
-    addrList = ""
-    addrHeader = "{\"splc10\": \"[splcNo]\", \"addr\":["
+# combine the two functions
+def format_data(srcfile, destfile):
+    first_line = True
+    address_list = ""
+    address_header = ""
 
-    splcList = ""
-    splcHeader = "\"splc10\":["
-    m = re.compile("([0-9]{3}){1}")
+    branch_list = ""
+    branch_header = '"splc10":['
+    m = re.compile("([0-9]{3})")
 
     for line in srcfile:
         if len(line.strip()) == 0:
             continue
 
         if m.match(line.strip()):
-            if flag:
-                addrHeader += addrList + "]},"
-                destfile.writelines(addrHeader)
+            if not first_line:
+                address_header += address_list + "]},"
+                destfile.writelines(address_header)
                 destfile.writelines("\n")
 
-            addrList = ""
-            addrHeader = "{\"splc10\": \"[splcNo]\", \"addr\":["
-            tmp = line.split('\t')
-            splc = tmp[0].strip()
-            addr = tmp[1].strip()
-            addrHeader = addrHeader.replace("[splcNo]", splc)
+            address_list = ""
+            address_header = '{"splc10": "[splcNo]", "addr":['
+            tmp = line.split(":")
+            branch = tmp[0].strip()
+            address = tmp[1].strip()
+            address_header = address_header.replace("[splcNo]", branch)
 
-            if not flag:
-                splcList += "\"" + splc + "\""
+            if first_line:
+                branch_list += '"' + branch + '"'
             else:
-                splcList += ", \"" + splc + "\""
+                branch_list += ', "' + branch + '"'
 
-            if len(addr) != 0:
-                addrList += "\"" + addr + "\""
+            if len(address) != 0:
+                address_list += '"' + address + '"'
 
-            flag = True
+            first_line = False
         else:
-            if addrList != "":
-                addrList += ", \"" + line.strip() + "\""
+            if address_list != "":
+                address_list += ', "' + line.strip() + '"'
             else:
-                addrList += "\"" + line.strip() + "\""
+                address_list += '"' + line.strip() + '"'
 
-    splcHeader += splcList + "]"
-    addrHeader += addrList + "]}"
-    destfile.writelines(addrHeader)
+    branch_header += branch_list + "]"
+    address_header += address_list + "]}"
+    destfile.writelines(address_header)
     destfile.writelines("\n\n")
-    destfile.writelines(splcHeader)
+    destfile.writelines(branch_header)
     destfile.writelines("\n")
 
 
 if __name__ == '__main__':
-    srcfile = "contact.txt"
-    destfile = "output.txt"
+    srcfile = "f:\\contact3.txt"
+    destfile = "f:\\output.txt"
 
-    src = openInputFile(srcfile)
-    dest = openOutputFile(destfile)
+    src = open_infile(srcfile)
+    dest = open_outfile(destfile)
 
-    formatData(src, dest)
+    format_data(src, dest)
     src.close()
     dest.close()
     print "finish!\n"
