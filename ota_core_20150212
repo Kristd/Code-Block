@@ -1,0 +1,41 @@
+Jan 18 OTA
+[qdevsom@icdps:/ota/ota]{20150209+0 10:49:13}$ dbx ota_main_d core
+Type 'help' for help.
+[using memory image in core]
+reading symbolic information ...
+
+Illegal instruction (illegal opcode) in . at 0x0 ($t19)
+warning: Unable to access address 0x0 from core
+(dbx) where
+.() at 0x0
+Event_Handler_tp_KMC::service(Event_Handler_tp_instance*)(this = 0x20875060, tp_inst = 0x208758b0), line 71 in "handler_tp_kmc.cpp"
+unnamed block in Event_Handler_tp_entry(void*)(p = 0x208758b0), line 580 in "handler_tp.cpp"
+Event_Handler_tp_entry(void*)(p = 0x208758b0), line 580 in "handler_tp.cpp"
+(dbx) p *ths^His
+print *this
+          ^ syntax error
+(dbx) p *this
+    Event_Handler_tp:(tp_name = "CMBKMMON", tp_fd = 13, tp_num = 5, tp_init = 5, tp_max = 50, tp_handlers =
+                       _Vector_val<CCOMM_MSG_Handler *,std__allocator<CCOMM_MSG_Handler *> >:(_Alval = ))
+                   (_First = 0x201c24d8, _Last = 0x201c24e4, _End = 0x201c24e4),
+     tp_pool =
+                   _Vector_val<Event_Handler_tp_instance *,std__allocator<Event_Handler_tp_instance *> >:(_Alval = ))
+               (_First = 0x20875b20, _Last = 0x20875b34, _End = 0x20875b38),
+     tp_mgr = 0x200c9150, m_pTaskQueue = 0x20875200, isNeedConvert = false)
+    MON_App:(mon_thread = 1129136715, mon_attr = 0x4d4d4f4e, mon_mutex = (__mt_word = (0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)), mon_mattr = (nil), mon_cattr = (nil), mon_cond = (__cv_word = (13, 5, 5, 50, 0, 538715352, 538715364, 538715364, 0, 545741600, 545741620)), mon_exit = 545741624, timeout = 537694544, last = 545739264, init_session = 0, max_session = 537175792, num_session = 3599, ssn_duration = 545739992, mon_interval = 0, hostname = "", port = 0, srel = (nil), hsm_mutex = (__mt_word = (0, 0, 544099928, 545739416, 0, 0, 0, 36, 0, 545955056, 10, 0, 60)))
+()
+(dbx) p *tp_inst
+(thread_tp = 0x20875060, thread_fd = 0, thread_busy = 1, thread_handler = 0x2fefa710, started = 0, thread = 4627, thread_attr = 0x20875928, thread_condattr = (nil), thread_mutex = (__mt_word = (0, 0, 0, 1, 0, 95, 0, 5, 0, 0, 0, 0, 0)), thread_mutexattr = 0x20875998, m_pTaskQueue = 0x20875200)
+(dbx) up
+Event_Handler_tp_KMC::service(Event_Handler_tp_instance*)(this = 0x20875060, tp_inst = 0x208758b0), line 71 in "handler_tp_kmc.cpp"
+(dbx) up
+unnamed block in Event_Handler_tp_entry(void*)(p = 0x208758b0), line 580 in "handler_tp.cpp"
+(dbx) p *p
+32
+(dbx) up
+Event_Handler_tp_entry(void*)(p = 0x208758b0), line 580 in "handler_tp.cpp"
+(dbx) p *p
+32
+(dbx) up
+not that many levels
+(dbx)
