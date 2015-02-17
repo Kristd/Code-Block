@@ -1,0 +1,157 @@
+20150101012831	INFO	Event_Handler_tp_ATM::service	file handler_tp_atm.cpp, line 536	message id	9010820
+trans_id:075584EI00000304 time:20150101012831
+DEBUG	ATMMsgQueue::SetMsgData	file atmmsgqueue.cpp line 9e	075584EI0000030420b8d830
+53:1100000000000000
+key type:1		key len: 1
+20150101012831	DEBUG	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 798	075584EI	1	1 update key start
+20150101012831	DEBUG	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1188	update key	075584EI	ATM	5
+INFO	CKM_Key_Scheme_Union::update_key_impl	file key_scheme_union.cpp, line 1366	generate key	5B302B281E0FE1E5F8A6C4ACA3B24414	1F297C64913FA8DA
+20150101012831	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1319	export key succeed	075584EI	16	1	1	5B302B281E0FE1E5F8A6C4ACA3B24414	1F297C64913FA8DA
+20150101012831	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1610	export key succeed	075584EI	16	1	1	B236CE6463F2E58934EA8D4E7C0EBDDF	1F297C64913FA8DA
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+20150101012831	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1755	key update to host	075584EI
+00000770010203SC  SCKEYREG                                INTNNS                    *CLIET                    20150101012831          SUC0000                                                  N       3           10SCKEYREGZ 0001000264$ITVCTL$  0001000100          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000ATM       075584EI                                                                                                                                                                                                                                                      I                                                                                           
+没有找到对象[$ITVCTL$]
+20150101012831	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1817	update key to host succeed	075584EI	0	1	1	B236CE6463F2E58934EA8D4E7C0EBDDF	1F297C64913FA8DA
+20150101012831	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1838	update key finished	075584EI	0
+INFO	CKM_Device_Union::~CKM_Device_Union	file km_device_union.cpp, line 1090	device	075584EI	2	keytype	3	5
+INFO	CMB_MSG::~CMB_MSG		file cmb_msg.cpp, line 77
+INFO	CMB_MSG_HDR::~CMB_MSG_HDR	file cmb_msg_hdr.cpp, line 377
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+INFO	CMB_MSG::~CMB_MSG		file cmb_msg.cpp, line 77
+INFO	CMB_MSG_HDR::~CMB_MSG_HDR	file cmb_msg_hdr.cpp, line 377
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+20150101012831	INFO	Event_Handler_tp_ATM::service	file handler_tp_atm.cpp line 165	wait msgq msg
+INFO	Event_Handler_msg::read	file handler_msg.cpp, line 178	ret 111	errno 2
+20150101012832	INFO	Event_Handler_tp_ATM::service	file handler_tp_atm.cpp line 180	read msg from msgq 111
+20150101012832	INFO	Event_Hander_tp_ATM::service	file handler_tp_atm.cpp, line 443	10240 bytes received
+ATM120099075584F5000000820x80x18x00x00x08x81x08x00x04x00x00x00x00x00x00x000128310101141228100000075584F50081F662B812000000000000000901
+20150101012832	INFO	Event_Handler_tp_ATM::service	file handler_tp_atm.cpp, line 536	message id	9010820
+trans_id:075584F500000304 time:20150101012832
+DEBUG	ATMMsgQueue::SetMsgData	file atmmsgqueue.cpp line 9e	075584F50000030420b8d840
+53:2000000000000000
+key type:2		key len: 0
+20150101012832	DEBUG	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 798	075584F5	2	0 update key start
+20150101012832	DEBUG	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1188	update key	075584F5	ATM	6
+INFO	CKM_Key_Scheme_Union::update_key_impl	file key_scheme_union.cpp, line 1366	generate key	34EA0DE99B8F3C12	8A1372C976175DE5
+20150101012832	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1319	export key succeed	075584F5	16	2	0	34EA0DE99B8F3C12	8A1372C976175DE5
+20150101012832	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1610	export key succeed	075584F5	16	2	0	4FF03A62F3B89422	8A1372C976175DE5
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+20150101012832	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1755	key update to host	075584F5
+00000770010203SC  SCKEYREG                                INTNNS                    *CLIET                    20150101012832          SUC0000                                                  N       3           10SCKEYREGZ 0001000264$ITVCTL$  0001000100          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000ATM       075584F5                                                                                                                                                                                                                                                      I                                                                                           
+没有找到对象[$ITVCTL$]
+20150101012832	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1817	update key to host succeed	075584F5	0	2	0	4FF03A62F3B89422	8A1372C976175DE5
+20150101012832	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1838	update key finished	075584F5	0
+INFO	CKM_Device_Union::~CKM_Device_Union	file km_device_union.cpp, line 1090	device	075584F5	2	keytype	3	6
+INFO	CMB_MSG::~CMB_MSG		file cmb_msg.cpp, line 77
+INFO	CMB_MSG_HDR::~CMB_MSG_HDR	file cmb_msg_hdr.cpp, line 377
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+INFO	CMB_MSG::~CMB_MSG		file cmb_msg.cpp, line 77
+INFO	CMB_MSG_HDR::~CMB_MSG_HDR	file cmb_msg_hdr.cpp, line 377
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+20150101012832	INFO	Event_Handler_tp_ATM::service	file handler_tp_atm.cpp line 165	wait msgq msg
+INFO	Event_Handler_msg::read	file handler_msg.cpp, line 178	ret 111	errno 2
+20150101012832	INFO	Event_Handler_tp_ATM::service	file handler_tp_atm.cpp line 180	read msg from msgq 111
+20150101012832	INFO	Event_Hander_tp_ATM::service	file handler_tp_atm.cpp, line 443	10240 bytes received
+ATM120099001097CG000000820x80x18x00x00x08x81x08x00x04x00x00x00x00x00x00x000127430101141231100000001097CG00849E40AEF2000000000000000901
+20150101012832	INFO	Event_Handler_tp_ATM::service	file handler_tp_atm.cpp, line 536	message id	9010820
+trans_id:001097CG00000304 time:20150101012832
+DEBUG	ATMMsgQueue::SetMsgData	file atmmsgqueue.cpp line 9e	001097CG0000030420b8d850
+53:2000000000000000
+key type:2		key len: 0
+20150101012832	DEBUG	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 798	001097CG	2	0 update key start
+20150101012832	DEBUG	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1188	update key	001097CG	ATM	6
+INFO	CKM_Key_Scheme_Union::update_key_impl	file key_scheme_union.cpp, line 1366	generate key	613BAC22348DC350	EE2A6D3A0C8101D9
+20150101012832	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1319	export key succeed	001097CG	16	2	0	613BAC22348DC350	EE2A6D3A0C8101D9
+20150101012832	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1610	export key succeed	001097CG	16	2	0	8D9E6F9196D00C38	EE2A6D3A0C8101D9
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+20150101012832	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1755	key update to host	001097CG
+00000770010203SC  SCKEYREG                                INTNNS                    *CLIET                    20150101012832          SUC0000                                                  N       3           10SCKEYREGZ 0001000264$ITVCTL$  0001000100          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000ATM       001097CG                                                                                                                                                                                                                                                      I                                                                                           
+没有找到对象[$ITVCTL$]
+20150101012832	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1817	update key to host succeed	001097CG	0	2	0	8D9E6F9196D00C38	EE2A6D3A0C8101D9
+20150101012832	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1838	update key finished	001097CG	0
+INFO	CKM_Device_Union::~CKM_Device_Union	file km_device_union.cpp, line 1090	device	001097CG	2	keytype	3	6
+INFO	CMB_MSG::~CMB_MSG		file cmb_msg.cpp, line 77
+INFO	CMB_MSG_HDR::~CMB_MSG_HDR	file cmb_msg_hdr.cpp, line 377
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+INFO	CMB_MSG::~CMB_MSG		file cmb_msg.cpp, line 77
+INFO	CMB_MSG_HDR::~CMB_MSG_HDR	file cmb_msg_hdr.cpp, line 377
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+20150101012832	INFO	Event_Handler_tp_ATM::service	file handler_tp_atm.cpp line 165	wait msgq msg
+INFO	Event_Handler_msg::read	file handler_msg.cpp, line 178	ret 111	errno 2
+20150101012832	INFO	Event_Handler_tp_ATM::service	file handler_tp_atm.cpp line 180	read msg from msgq 111
+20150101012832	INFO	Event_Hander_tp_ATM::service	file handler_tp_atm.cpp, line 443	10240 bytes received
+ATM120099075584P4000000820x80x18x00x00x08x81x08x00x04x00x00x00x00x00x00x000128520101141228200000075584P40084CD776E11100000000000000901
+20150101012832	INFO	Event_Handler_tp_ATM::service	file handler_tp_atm.cpp, line 536	message id	9010820
+trans_id:075584P400000304 time:20150101012832
+DEBUG	ATMMsgQueue::SetMsgData	file atmmsgqueue.cpp line 9e	075584P40000030420b8d860
+53:1100000000000000
+key type:1		key len: 1
+20150101012832	DEBUG	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 798	075584P4	1	1 update key start
+20150101012832	DEBUG	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1188	update key	075584P4	ATM	5
+INFO	CKM_Key_Scheme_Union::update_key_impl	file key_scheme_union.cpp, line 1366	generate key	FF26479D2DAB2D2B46B79F56A9CBB95E	5AE314E4A2EBBA83
+20150101012832	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1319	export key succeed	075584P4	16	1	1	FF26479D2DAB2D2B46B79F56A9CBB95E	5AE314E4A2EBBA83
+20150101012833	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1610	export key succeed	075584P4	16	1	1	69175F689B57F8CCDB1721131F2B58BD	5AE314E4A2EBBA83
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+20150101012833	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1755	key update to host	075584P4
+00000770010203SC  SCKEYREG                                INTNNS                    *CLIET                    20150101012833          SUC0000                                                  N       3           10SCKEYREGZ 0001000264$ITVCTL$  0001000100          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000ATM       075584P4                                                                                                                                                                                                                                                      I                                                                                           
+没有找到对象[$ITVCTL$]
+20150101012833	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1817	update key to host succeed	075584P4	0	1	1	69175F689B57F8CCDB1721131F2B58BD	5AE314E4A2EBBA83
+20150101012833	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1838	update key finished	075584P4	0
+INFO	CKM_Device_Union::~CKM_Device_Union	file km_device_union.cpp, line 1090	device	075584P4	2	keytype	3	5
+INFO	CMB_MSG::~CMB_MSG		file cmb_msg.cpp, line 77
+INFO	CMB_MSG_HDR::~CMB_MSG_HDR	file cmb_msg_hdr.cpp, line 377
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+INFO	CMB_MSG::~CMB_MSG		file cmb_msg.cpp, line 77
+INFO	CMB_MSG_HDR::~CMB_MSG_HDR	file cmb_msg_hdr.cpp, line 377
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+20150101012833	INFO	Event_Handler_tp_ATM::service	file handler_tp_atm.cpp line 165	wait msgq msg
+INFO	Event_Handler_msg::read	file handler_msg.cpp, line 178	ret 111	errno 2
+20150101012833	INFO	Event_Handler_tp_ATM::service	file handler_tp_atm.cpp line 180	read msg from msgq 111
+20150101012833	INFO	Event_Hander_tp_ATM::service	file handler_tp_atm.cpp, line 443	10240 bytes received
+ATM120099075584EI000000820x80x18x00x00x08x81x08x00x04x00x00x00x00x00x00x000129000101141228100000075584EI008EAE9E4812000000000000000901
+20150101012833	INFO	Event_Handler_tp_ATM::service	file handler_tp_atm.cpp, line 536	message id	9010820
+trans_id:075584EI00000304 time:20150101012833
+DEBUG	ATMMsgQueue::SetMsgData	file atmmsgqueue.cpp line 9e	075584EI0000030420b8d870
+53:2000000000000000
+key type:2		key len: 0
+20150101012833	DEBUG	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 798	075584EI	2	0 update key start
+20150101012833	DEBUG	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1188	update key	075584EI	ATM	6
+INFO	CKM_Key_Scheme_Union::update_key_impl	file key_scheme_union.cpp, line 1366	generate key	03E4200B17FD74F8	7CDB18F39D04935A
+20150101012833	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1319	export key succeed	075584EI	16	2	0	03E4200B17FD74F8	7CDB18F39D04935A
+20150101012833	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1610	export key succeed	075584EI	16	2	0	A79FB2355AF3AFE7	7CDB18F39D04935A
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+ERROR	CMB_MSG_SVC::name_match	file cmb_msg_svc.cpp, line 294	null input
+20150101012833	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1755	key update to host	075584EI
+00000770010203SC  SCKEYREG                                INTNNS                    *CLIET                    20150101012833          SUC0000                                                  N       3           10SCKEYREGZ 0001000264$ITVCTL$  0001000100          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000          0000000000ATM       075584EI                                                                                                                                                                                                                                                      I                                                                                           
+没有找到对象[$ITVCTL$]
+20150101012833	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1817	update key to host succeed	075584EI	0	2	0	A79FB2355AF3AFE7	7CDB18F39D04935A
+20150101012833	INFO	CKM_Key_Scheme_atm::update_key	file key_scheme_atm_key.cpp, line 1838	update key finished	075584EI	0
+INFO	CKM_Device_Union::~CKM_Device_Union	file km_device_union.cpp, line 1090	device	075584EI	2	keytype	3	6
+INFO	CMB_MSG::~CMB_MSG		file cmb_msg.cpp, line 77
+INFO	CMB_MSG_HDR::~CMB_MSG_HDR	file cmb_msg_hdr.cpp, line 377
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+INFO	CMB_MSG::~CMB_MSG		file cmb_msg.cpp, line 77
+INFO	CMB_MSG_HDR::~CMB_MSG_HDR	file cmb_msg_hdr.cpp, line 377
+INFO	CMB_MSG_SVC::~CMB_MSG_SVC	file cmb_msg_svc.cpp, line 421
+20150101012833	INFO	Event_Handler_tp_ATM::service	file handler_tp_atm.cpp line 165	wait msgq msg
+INFO	file kmcTask.cpp, line 438	check parent process ok!
+INFO	CKM_Device_Union::~CKM_Device_Union	file km_device_union.cpp, line 1090	device	0010977X	2	keytype	6	5
+INFO	CKM_Device_Union::~CKM_Device_Union	file km_device_union.cpp, line 1090	device	0010977Z	2	keytype	6	5
+INFO	CKM_Device_Union::~CKM_Device_Union	file km_device_union.cpp, line 1090	device	001097ES	2	keytype	6	5
+INFO	CKM_Device_Union::~CKM_Device_Union	file km_device_union.cpp, line 1090	device	00102204	2	keytype	6	5
+INFO	CKM_Device_Union::~CKM_Device_Union	file km_device_union.cpp, line 1090	device	00102205	2	keytype	6	5
