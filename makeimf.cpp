@@ -26,6 +26,8 @@ int checkParams(char* argv[], commands comm) {
 
 
 
+
+
 int makeImf(int argc, char* argv[]) {
 	int ret = -999;
 	FILE* src = NULL;
