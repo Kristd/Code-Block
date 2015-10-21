@@ -1,8 +1,11 @@
-#include "compare.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
+
+#define PASSWD_FILE_DEC "passwdfile_dec.log"
+#define PASSWD_FILE_ENC "passwdfile_enc.log"
 
 int getPasswdLength() {
 	int len = 0;
@@ -82,34 +85,119 @@ int createPasswds(unsigned char *passwd, int *length) {
 }
 
 
-int savToFiles(unsigned char *passwd, int len) {
-	FILE *fp = NULL;
-
-	if((fp = fopen(PASSWD_ASC_FILE, "ab+")) == NULL) {
+int savToFiles(unsigned char *passwd, int len, FILE* fp) {
+	if(fp == NULL) {
 		return -1;
-	}
+	} 
 
-	if(0 > fwrite(passwd, len, 1, fp)) {
-		return -2;
-	}
-
+	fwrite(passwd, len, 1, fp);
 	fwrite("\n", 1, 1, fp);
 
 	fflush(fp);
-	fclose(fp);
-	fp = NULL;
-
 	return 0;
 }
 
 
-int test() {
+int calcPasswd(unsigned char *inbuf, int inlen, unsigned char *outbuf, int *outlen) {
+	unsigned char *ptr = NULL;
+
+	if(inbuf == NULL) {
+		return -1;
+	}
+
+	if(outbuf == NULL) {
+		return -2;
+	}
+
+	if(inlen > *outlen) {
+		return -3;
+	}
+
+	ptr = outbuf;
+
+	for(int i = 0; i < inlen; i++) {
+		*ptr = inbuf[i] + 0x01;
+		ptr++;
+	}
+
+	*outlen = inlen;
+	return *outlen;
+}
+
+int compareStr(unsigned char *decbuf, int declen, unsigned char *encbuf, int enclen) {
+	unsigned char *pDec = NULL;
+	unsigned char *pEnc = NULL;
+
+	if(decbuf == NULL) {
+		return -1;
+	}
+
+	if(encbuf == NULL) {
+		return -2;
+	}
+
+	if(declen != enclen) {
+		return -3;
+	}
+
+	pDec = decbuf;
+	pEnc = encbuf;
+
+	for(int i = 0; i < declen; i++) {
+		if(*pDec != (*pEnc-0x01)) {
+			return -4;
+		}
+
+		pDec++;
+		pEnc++;
+	}
+
+	return 0;
+}
+
+int main() {
+	int count = 1000;
 	unsigned char passwd[32];
 	int len = 32;
+	unsigned char encPasswd[32];
+	int enclen = 32;
+	FILE *fp1 = NULL;
+	FILE *fp2 = NULL;
 
-	createPasswds(passwd, &len);
+	if((fp1 = fopen(PASSWD_FILE_DEC, "ab+")) == NULL) {
+		printf("Open %s failed.\n", PASSWD_FILE_DEC);
+		return -1;
+	}
 
-	savToFiles(passwd, len);
+	if((fp2 = fopen(PASSWD_FILE_ENC, "ab+")) == NULL) {
+		printf("Open %s failed\n", PASSWD_FILE_ENC);
+		return -2;
+	}
+
+	for(int i = 0; i < count; i++) {
+		len = 32;
+		memset(passwd, 0, len);
+
+		enclen = 32;
+		memset(encPasswd, 0, enclen);
+
+		createPasswds(passwd, &len);
+		savToFiles(passwd, len, fp1);
+
+		calcPasswd(passwd, len, encPasswd, &enclen);
+		savToFiles(encPasswd, enclen, fp2);
+	}
+
+	if(fp2 != NULL) {
+		fflush(fp2);
+		fclose(fp2);
+	}
+
+	if(fp1 != NULL) {
+		fflush(fp1);
+		fclose(fp1);
+	}
+
 	return 0;
 }
 
