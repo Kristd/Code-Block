@@ -12,25 +12,25 @@ private:
     ClassFactory() {};
 
 public:
-	void* getClassByName(string className) {
-	    map<string, createObject>::const_iterator iter;
-	    iter = m_classMap.find(className);
-	    if (iter == m_classMap.end()) {
-	        return NULL;
-	    }
-	    else {
-	        return iter->second();
-	    }
+    void* getClassByName(string className) {
+	map<string, createObject>::const_iterator iter;
+	iter = m_classMap.find(className);
+	if (iter == m_classMap.end()) {
+	    return NULL;
 	}
+	else {
+	    return iter->second();
+	}
+    }
 
-	void registClass(string name, createObject method) {
-	    m_classMap.insert(pair<string, createObject>(name, method));
-	}
+    void registClass(string name, createObject method) {
+        m_classMap.insert(pair<string, createObject>(name, method));
+    }
 
     static ClassFactory& getInstance() {
-		static ClassFactory m_factory;
-	    return m_factory;
-	}
+	static ClassFactory m_factory;
+        return m_factory;
+    }
 };
 
 class Register {
