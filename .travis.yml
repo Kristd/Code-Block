@@ -1,0 +1,9 @@
+language: cpp
+script: true
+os: 
+  - osx
+compiler:
+  - clang
+  - gcc
+notifications:
+  email: false
